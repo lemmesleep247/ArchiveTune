@@ -619,4 +619,10 @@
     <string name="aod_clock_elegant_thin">Elegan Tipis</string>
     <string name="aod_clock_bold_digital">Tebal Digital</string>
     <string name="aod_customize_ambient_brightness">Kecerahan Sekitar</string>
+    <string name="aod_customize_auto_dimming_desc">Turunkan opasitas layar setelah 10 detik tidak aktif</string>
+    <string name="aod_slide_to_unlock">Geser untuk Membuka Kunci &gt;&gt;&gt;</string>
+    <string name="aod_hold_to_unlock">Tekan untuk 1,5 detik untuk membuka kunci</string>
+    <string name="aod_customize_clock_style">Tema Jam</string>
+    <string name="aod_customize_proximity_blackout_desc">Matikan layar saat sensor proksimitas mendeteksi penempatan di saku atau menghadap ke bawah</string>
+    <string name="aod_slide_to_lock">Geser untuk Mengunci &gt;&gt;&gt;</string>
 </resources>
