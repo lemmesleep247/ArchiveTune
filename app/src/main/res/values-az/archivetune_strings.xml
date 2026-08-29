@@ -102,4 +102,32 @@
     <string name="news_no_results_desc">Fərqli bir axtarış ifadəsi sınayın.</string>
     <string name="news_important_badge">Vacib</string>
     <string name="news_tooltip_title">Yeni elanlar</string>
+    <string name="news_tooltip_body">Tərtibatçılardan oxunmamış elanlarınız var.</string>
+    <string name="news_author_on_date">%1$s · %2$s</string>
+    <plurals name="news_article_count">
+        <item quantity="one">%d məqalə</item>
+        <item quantity="other">%d məqalə</item>
+    </plurals>
+    <string name="no_title">Başlıqsız</string>
+    <string name="unknown_artist">Naməlum rəssam</string>
+    <string name="aod_customize_title">AOD fərdiləşdirilməsi</string>
+    <string name="aod_customize_subtitle">Forma, tərtibat, idarəetmə elementləri və interyer üslubu</string>
+    <string name="aod_customize_entry_desc">Daim aktiv player ekranını fərdiləşdirin</string>
+    <string name="aod_customize_preview">Canlı önizləmə</string>
+    <string name="aod_customize_mode_enabled">Canlı önizləmə</string>
+    <string name="aod_customize_mode_enabled_desc">ArchiveTune-a həmişə aktiv pleyer ekranını göstərməyə icazə verin</string>
+    <string name="aod_customize_visibility">Görünmə</string>
+    <string name="aod_customize_show_thumbnail">Kiçik təsviri göstər</string>
+    <string name="aod_customize_show_artist">İfaçını göstər</string>
+    <string name="aod_customize_show_album">Albomu göstər</string>
+    <string name="aod_customize_show_progress">İlərləməni göstər</string>
+    <string name="aod_customize_show_time_labels">Vaxt etiketlərini göstər</string>
+    <string name="aod_customize_show_controls">İdarəetmə elementlərini göstər</string>
+    <string name="aod_customize_show_exit_button">Çıxış düyməsini göstər</string>
+    <string name="aod_customize_show_lyric_ticker">Mahnı sözləri sətrini göstər</string>
+    <string name="aod_customize_thumbnail_shape">Kiçik təsvir forması</string>
+    <string name="aod_customize_thumbnail_shape_desc">AOD təsvir maskası üçün formalardan istifadə edir.</string>
+    <string name="aod_customize_layout">Düzən</string>
+    <string name="aod_customize_background_style">Fon tərzi</string>
+    <string name="aod_customize_accent_style">Aksent tərzi</string>
 </resources>
