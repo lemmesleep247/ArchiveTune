@@ -52,4 +52,12 @@
     <string name="local_songs_latest_scan">สแกน ล่าสุด</string>
     <string name="local_songs_scan_filters_title">ฟิลเตอร์ในการสแกน</string>
     <string name="local_songs_scan_folders_add">เพิ่มโฟลเดอร์</string>
+    <string name="music_recognition_history_search">ค้นหาเพลงที่ระบบรู้จัก</string>
+    <string name="music_recognition_history_empty_title">ยังไม่มีเพลงที่ระบุได้</string>
+    <string name="music_recognition_history_empty_body">หลังจากระบบจดจำสำเร็จ เพลงที่ตรงกันจะปรากฏที่นี่</string>
+    <string name="music_recognition_history_no_results_body">ลองใช้อย่าอื่นแทนเช่น เพลง, ศิลปิน, อัลบั้ม, หรือ โค้ด</string>
+    <string name="history_local_empty_title">ยังไม่มีประวัติท้องถิ่น</string>
+    <string name="history_remote_loading">กำลังซิงค์ประวัติระยะไกล</string>
+    <string name="history_remote_empty_title">ไม่มีประวัติการใช้งานจากระยะไกล</string>
+    <string name="history_remote_empty_desc">ประวัติการรับชมที่ซิงค์ไว้ของคุณจะปรากฏที่นี่หลังจากที่คุณฟังเพลงบน YouTube Music แล้ว</string>
 </resources>
