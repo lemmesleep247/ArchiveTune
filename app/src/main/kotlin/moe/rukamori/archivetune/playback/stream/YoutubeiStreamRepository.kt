@@ -91,16 +91,35 @@ class YoutubeiStreamRepository
                                 timezone = TimeZone.getDefault().id,
                             ),
                         priority = priority.toYoutubeiPriority(),
+                        videoPoTokenProvider = { replacementMediaId ->
+                            val replacementAuthState =
+                                YTPlayerUtils.ensureYoutubeiPoTokensForPlayback(
+                                    videoId = replacementMediaId,
+                                    authState = authState,
+                                )
+                            replacementAuthState.poTokenGvs?.takeIf {
+                                replacementAuthState.poTokenGvsVideoId == replacementMediaId
+                            }
+                        },
                     )
                 } catch (cancellation: CancellationException) {
                     throw cancellation
                 } catch (failure: YoutubeiException) {
-                    if (failure.kind == YoutubeiFailureKind.LOGIN_REQUIRED) {
-                        throw YTPlayerUtils.LoginRequiredForPlaybackException(
-                            videoId = request.mediaId,
-                            targetUrl = request.mediaUrl,
-                            reason = failure.message,
-                        )
+                    when (failure.kind) {
+                        YoutubeiFailureKind.LOGIN_REQUIRED ->
+                            throw YTPlayerUtils.LoginRequiredForPlaybackException(
+                                videoId = request.mediaId,
+                                targetUrl = request.mediaUrl,
+                                reason = failure.message,
+                            )
+
+                        YoutubeiFailureKind.PO_TOKEN ->
+                            throw YTPlayerUtils.BotDetectionPlaybackException(
+                                videoId = request.mediaId,
+                                clients = setOf(if (authState.hasLoginCookie) "WEB_CREATOR" else "WEB"),
+                            )
+
+                        else -> Unit
                     }
                     throw failure
                 }
