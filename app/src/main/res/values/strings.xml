@@ -4,6 +4,13 @@
     <string name="songs">Songs</string>
     <string name="artists">Artists</string>
     <string name="albums">Albums</string>
+    <string name="podcast">Podcast</string>
+    <string name="episodes">Episodes</string>
+    <string name="podcast_has_no_episodes">This podcast has no available episodes.</string>
+    <plurals name="n_episode">
+        <item quantity="one">%d episode</item>
+        <item quantity="other">%d episodes</item>
+    </plurals>
     <string name="playlists">Playlists</string>
     <plurals name="n_selected">
         <item quantity="other">%d selected</item>

@@ -234,7 +234,9 @@ import moe.rukamori.archivetune.extensions.toMediaItem
 import moe.rukamori.archivetune.innertube.YouTube
 import moe.rukamori.archivetune.innertube.models.AlbumItem
 import moe.rukamori.archivetune.innertube.models.ArtistItem
+import moe.rukamori.archivetune.innertube.models.EpisodeItem
 import moe.rukamori.archivetune.innertube.models.PlaylistItem
+import moe.rukamori.archivetune.innertube.models.PodcastItem
 import moe.rukamori.archivetune.innertube.models.SongItem
 import moe.rukamori.archivetune.models.toMediaMetadata
 import moe.rukamori.archivetune.musicrecognition.ACTION_MUSIC_RECOGNITION
@@ -2296,6 +2298,19 @@ class MainActivity : ComponentActivity() {
                                                                     luckyItem.playEndpoint?.let {
                                                                         playerConnection?.playQueue(YouTubeQueue.playlist(it))
                                                                     }
+                                                                }
+
+                                                                is PodcastItem -> {
+                                                                    navController.navigate("podcast/${Uri.encode(luckyItem.browseId)}")
+                                                                }
+
+                                                                is EpisodeItem -> {
+                                                                    playerConnection?.playQueue(
+                                                                        ListQueue(
+                                                                            title = luckyItem.podcast?.name ?: luckyItem.title,
+                                                                            items = listOf(luckyItem.toMediaItem()),
+                                                                        ),
+                                                                    )
                                                                 }
                                                             }
                                                         }

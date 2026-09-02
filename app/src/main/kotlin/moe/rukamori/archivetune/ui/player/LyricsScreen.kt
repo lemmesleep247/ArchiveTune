@@ -207,9 +207,10 @@ fun LyricsScreen(
                     context.applicationContext,
                     moe.rukamori.archivetune.di.LyricsHelperEntryPoint::class.java,
                 ).lyricsHelper()
-        }
+    }
 
     LaunchedEffect(mediaMetadata.id, currentLyrics?.lyrics) {
+        if (mediaMetadata.isPodcast) return@LaunchedEffect
         if (currentLyrics != null) return@LaunchedEffect
         try {
             val existingLyrics =

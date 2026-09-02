@@ -438,7 +438,7 @@ fun PlayerMenu(
                     actions =
                         buildList {
                             castPlayerMenuAction?.let(::add)
-                            if (!isLocalMedia) {
+                            if (!isLocalMedia && !mediaMetadata.isPodcast) {
                                 add(
                                     NewAction(
                                         icon = {

@@ -557,6 +557,51 @@ interface DatabaseDao {
     @SuppressWarnings(RoomWarnings.QUERY_MISMATCH)
     @Query(
         """
+        SELECT artist.*,
+               (SELECT COUNT(1)
+                FROM song_artist_map
+                         JOIN event ON song_artist_map.songId = event.songId
+                         JOIN song ON song.id = song_artist_map.songId
+                WHERE artistId = artist.id
+                  AND song.isPodcast = 0
+                  AND timestamp > :fromTimeStamp AND timestamp <= :toTimeStamp) AS songCount,
+               (SELECT SUM(event.playTime)
+                FROM song_artist_map
+                         JOIN event ON song_artist_map.songId = event.songId
+                         JOIN song ON song.id = song_artist_map.songId
+                WHERE artistId = artist.id
+                  AND song.isPodcast = 0
+                  AND timestamp > :fromTimeStamp AND timestamp <= :toTimeStamp) AS timeListened
+        FROM artist
+                 JOIN(SELECT artistId, SUM(songTotalPlayTime) AS totalPlayTime
+                      FROM song_artist_map
+                               JOIN song ON song.id = song_artist_map.songId
+                               JOIN (SELECT songId, SUM(playTime) AS songTotalPlayTime
+                                     FROM event
+                                     WHERE timestamp > :fromTimeStamp
+                                     AND timestamp <= :toTimeStamp
+                                     GROUP BY songId) AS e
+                                    ON song_artist_map.songId = e.songId
+                      WHERE song.isPodcast = 0
+                      GROUP BY artistId
+                      ORDER BY totalPlayTime DESC
+                      LIMIT :limit
+                      OFFSET :offset)
+                     ON artist.id = artistId
+        WHERE artist.blockedAt IS NULL
+    """,
+    )
+    fun mostPlayedMusicArtists(
+        fromTimeStamp: Long,
+        limit: Int = 6,
+        offset: Int = 0,
+        toTimeStamp: Long? = LocalDateTime.now().toInstant(ZoneOffset.UTC).toEpochMilli(),
+    ): Flow<List<Artist>>
+
+    @Transaction
+    @SuppressWarnings(RoomWarnings.QUERY_MISMATCH)
+    @Query(
+        """
     SELECT album.*,
            COUNT(DISTINCT song_album_map.songId) as downloadCount,
            (SELECT COUNT(1)
@@ -1774,6 +1819,7 @@ interface DatabaseDao {
                 albumName = mediaMetadata.album?.title,
                 explicit = mediaMetadata.explicit,
                 isMusicVideo = mediaMetadata.isMusicVideo,
+                isPodcast = mediaMetadata.isPodcast,
             ),
         )
         songArtistMap(song.id).forEach(::delete)

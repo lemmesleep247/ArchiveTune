@@ -1336,7 +1336,7 @@ class MusicService :
         ) { mediaMetadata, showLyrics ->
             mediaMetadata to showLyrics
         }.collectLatest(ioScope) { (mediaMetadata, showLyrics) ->
-            if (showLyrics && mediaMetadata != null && database
+            if (showLyrics && mediaMetadata != null && !mediaMetadata.isPodcast && database
                     .lyrics(mediaMetadata.id)
                     .first() == null
             ) {
@@ -2262,6 +2262,10 @@ class MusicService :
     }
 
     private fun ensurePresenceManager() {
+        if (currentMediaMetadata.value?.isPodcast == true) {
+            requestDiscordSync(reason = "podcast_playback", force = true)
+            return
+        }
         if (DiscordPresenceManager.isRunning() && lastPresenceToken != null) return
 
         // Launch in scope to avoid blocking
@@ -2609,6 +2613,12 @@ class MusicService :
         crossfadeTriggerJob?.cancel()
         crossfadeTriggerJob = null
 
+        if (player.currentMetadata?.isPodcast == true) {
+            localPlayer.pauseAtEndOfMediaItems = false
+            releaseSecondaryCrossfadePlayer()
+            return
+        }
+
         if (isCrossfading) return
         if (!player.playWhenReady || sleepTimer.pauseWhenSongEnd) {
             localPlayer.pauseAtEndOfMediaItems = false
@@ -2691,6 +2701,7 @@ class MusicService :
 
         val currentItem = player.getMediaItemAt(currentIndex)
         val targetItem = player.getMediaItemAt(targetIndex)
+        if (currentItem.metadata?.isPodcast == true || targetItem.metadata?.isPodcast == true) return null
         if (!repeatCurrent && crossfadeGapless && isGaplessAlbumTransition(currentItem, targetItem)) return null
 
         return CrossfadeTarget(
@@ -3844,7 +3855,7 @@ class MusicService :
                         .setDisplayName(getString(R.string.start_radio))
                         .setIconResId(R.drawable.radio)
                         .setSessionCommand(CommandToggleStartRadio)
-                        .setEnabled(currentSong.value != null)
+                        .setEnabled(currentSong.value != null && currentMediaMetadata.value?.isPodcast != true)
                         .build(),
                 )
             mediaSession.setCustomLayout(customLayout)
@@ -3884,6 +3895,7 @@ class MusicService :
                 update(song.song.copy(duration = duration))
             }
         }
+        if (mediaMetadata.isPodcast) return
         if (!database.hasRelatedSongs(mediaId)) {
             val relatedEndpoint =
                 YouTube.next(WatchEndpoint(videoId = mediaId)).getOrNull()?.relatedEndpoint
@@ -4068,6 +4080,7 @@ class MusicService :
 
             if (
                 autoLoadMoreEnabled &&
+                player.currentMetadata?.isPodcast != true &&
                 !queue.hasNextPage() &&
                 player.mediaItemCount - player.currentMediaItemIndex <= 3
             ) {
@@ -4221,6 +4234,7 @@ class MusicService :
 
     fun onInfiniteQueueEnabled() {
         val currentMeta = player.currentMetadata ?: return
+        if (currentMeta.isPodcast) return
         if (isCurrentPlaybackItemLocal(currentMeta)) return
         if (infiniteQueueJob?.isActive == true) return
 
@@ -6676,6 +6690,7 @@ class MusicService :
         // Auto-load more from queue if available
         if (!suppressAutoPlayback &&
             !timelineEmpty &&
+            currentMediaMetadata.value?.isPodcast != true &&
             dataStore.get(AutoLoadMoreKey, true) &&
             reason != Player.MEDIA_ITEM_TRANSITION_REASON_REPEAT &&
             player.mediaItemCount - player.currentMediaItemIndex <= 5 &&
@@ -6712,7 +6727,7 @@ class MusicService :
             onInfiniteQueueEnabled()
         }
 
-        if (player.playWhenReady && player.playbackState == Player.STATE_READY) {
+        if (player.playWhenReady && player.playbackState == Player.STATE_READY && player.currentMetadata?.isPodcast != true) {
             scrobbleManager?.onSongStart(player.currentMetadata, duration = player.duration)
         }
 
@@ -6749,6 +6764,7 @@ class MusicService :
             }
             if (playbackState == Player.STATE_ENDED &&
                 !suppressAutoPlayback &&
+                player.currentMetadata?.isPodcast != true &&
                 dataStore.get(AutoLoadMoreKey, true) &&
                 player.repeatMode == REPEAT_MODE_OFF &&
                 player.currentMediaItem != null
@@ -7016,6 +7032,7 @@ class MusicService :
             val currentPosition = player.currentPosition
             scope.launch {
                 try {
+                    if (currentMetadata?.isPodcast == true) return@launch
                     val song = if (currentMediaId != null) withContext(Dispatchers.IO) { database.song(currentMediaId).first() } else null
                     val finalSong =
                         resolvePresenceSong(
@@ -7078,6 +7095,7 @@ class MusicService :
 
             scope.launch {
                 try {
+                    if (currentMetadata?.isPodcast == true) return@launch
                     val song =
                         if (currentMediaId !=
                             null
@@ -7120,7 +7138,9 @@ class MusicService :
 
         if (events.containsAny(Player.EVENT_IS_PLAYING_CHANGED)) {
             // Scrobble: Track play/pause state
-            scrobbleManager?.onPlayerStateChanged(player.isPlaying, player.currentMetadata, duration = player.duration)
+            if (player.currentMetadata?.isPodcast != true) {
+                scrobbleManager?.onPlayerStateChanged(player.isPlaying, player.currentMetadata, duration = player.duration)
+            }
         }
 
         // Persist queue on play/pause so a force-stop right after pausing still restores the correct position
@@ -7975,6 +7995,7 @@ class MusicService :
             playbackStats.totalPlayTimeMs >= thresholdMs &&
                 !dataStore.get(PauseListenHistoryKey, false)
         val shouldPersistHistory = alreadyPersistedForSession || reachedHistoryThreshold
+        val fallbackMetadata = mediaItem.metadata
 
         if (shouldPersistHistory) {
             ioScope.launch {
@@ -7994,7 +8015,6 @@ class MusicService :
                             ?: session
                     }
 
-                val fallbackMetadata = mediaItem.metadata
                 val eventId =
                     pendingResult?.eventId ?: insertPlaybackHistoryEvent(
                         mediaId = mediaId,
@@ -8022,25 +8042,28 @@ class MusicService :
                 }
             }
 
-            ioScope.launch {
-                try {
-                    val song =
-                        database.song(mediaId).first()
-                            ?: return@launch
+            if (fallbackMetadata?.isPodcast != true) {
+                ioScope.launch {
+                    try {
+                        val song =
+                            database.song(mediaId).first()
+                                ?: return@launch
+                        if (song.song.isPodcast) return@launch
 
-                    val lbEnabled = dataStore.get(ListenBrainzEnabledKey, false)
-                    val lbToken = dataStore.get(ListenBrainzTokenKey, "")
-                    val historyPaused = dataStore.get(PauseListenHistoryKey, false)
-                    if (lbEnabled && !lbToken.isNullOrBlank() && !historyPaused) {
-                        val endMs = System.currentTimeMillis()
-                        val startMs = endMs - playbackStats.totalPlayTimeMs
-                        try {
-                            ListenBrainzManager.submitFinished(this@MusicService, lbToken, song, startMs, endMs)
-                        } catch (ie: Exception) {
-                            Timber.tag("MusicService").v(ie, "ListenBrainz finished submit failed")
+                        val lbEnabled = dataStore.get(ListenBrainzEnabledKey, false)
+                        val lbToken = dataStore.get(ListenBrainzTokenKey, "")
+                        val historyPaused = dataStore.get(PauseListenHistoryKey, false)
+                        if (lbEnabled && !lbToken.isNullOrBlank() && !historyPaused) {
+                            val endMs = System.currentTimeMillis()
+                            val startMs = endMs - playbackStats.totalPlayTimeMs
+                            try {
+                                ListenBrainzManager.submitFinished(this@MusicService, lbToken, song, startMs, endMs)
+                            } catch (ie: Exception) {
+                                Timber.tag("MusicService").v(ie, "ListenBrainz finished submit failed")
+                            }
                         }
+                    } catch (_: Exception) {
                     }
-                } catch (_: Exception) {
                 }
             }
         }
@@ -8058,6 +8081,7 @@ class MusicService :
         mediaMetadata: MediaMetadata?,
         durationMs: Long,
     ): Song? {
+        if (mediaMetadata?.isPodcast == true || dbSong?.song?.isPodcast == true) return null
         val metadataSong = mediaMetadata?.let { createTransientSongFromMedia(it) }
         val song =
             when {
@@ -8130,6 +8154,7 @@ class MusicService :
                 albumName = media.album?.title,
                 explicit = media.explicit,
                 isMusicVideo = media.isMusicVideo,
+                isPodcast = media.isPodcast,
                 isLocal = media.id.isLocalMediaId(),
             )
 
