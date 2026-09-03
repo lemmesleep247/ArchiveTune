@@ -56,6 +56,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import androidx.media3.common.PlaybackException
+import moe.rukamori.archivetune.BuildConfig
 import moe.rukamori.archivetune.R
 
 @Composable
@@ -83,6 +84,12 @@ fun PlaybackErrorDialog(
     val httpLabel = stringResource(R.string.playback_error_http)
     val messageLabel = stringResource(R.string.playback_error_message)
     val causeLabel = stringResource(R.string.playback_error_cause)
+    val appVersion =
+        stringResource(
+            R.string.playback_error_app_version,
+            BuildConfig.VERSION_NAME,
+            BuildConfig.VERSION_CODE,
+        )
     val errorInfo = remember(error) { error.toPlaybackErrorInfo() }
     val httpCode = errorInfo.httpCode
     val title =
@@ -136,10 +143,11 @@ fun PlaybackErrorDialog(
             }
         }
     val details =
-        remember(error, reason, httpCode, codeLabel, httpLabel, messageLabel, causeLabel) {
+        remember(error, reason, appVersion, httpCode, codeLabel, httpLabel, messageLabel, causeLabel) {
             buildPlaybackErrorDetails(
                 error = error,
                 reason = reason,
+                appVersion = appVersion,
                 httpCode = httpCode,
                 codeLabel = codeLabel,
                 httpLabel = httpLabel,
@@ -473,6 +481,7 @@ private fun PlaybackErrorActionContent(
 private fun buildPlaybackErrorDetails(
     error: PlaybackException,
     reason: String,
+    appVersion: String,
     httpCode: Int?,
     codeLabel: String,
     httpLabel: String,
@@ -480,6 +489,7 @@ private fun buildPlaybackErrorDetails(
     causeLabel: String,
 ): String =
     buildString {
+        appendLine(appVersion)
         appendLine(reason)
         appendLine("$codeLabel: ${error.errorCode}")
         if (httpCode != null) appendLine("$httpLabel: $httpCode")
