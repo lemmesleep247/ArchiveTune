@@ -129,9 +129,9 @@ fun EpisodeItem.toMediaMetadata() =
                 ytimgResizePolicy = YtimgResizePolicy.PreserveOriginal,
             ),
         album =
-            podcast?.id?.let { podcastId ->
+            podcast?.let { podcast ->
                 MediaMetadata.Album(
-                    id = podcastId,
+                    id = podcast.id,
                     title = podcast.name,
                 )
             },
