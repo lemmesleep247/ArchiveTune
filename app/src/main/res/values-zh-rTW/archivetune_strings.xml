@@ -712,8 +712,6 @@
     <string name="mori_cipher_empty_description">連接網路以載入目前的 YouTube 播放器配置。</string>
     <string name="mori_cipher_error_title">無法解密</string>
     <string name="mori_cipher_load_failed">無法載入目前的播放器配置。現有的回退播放方案仍可使用。</string>
-    <string name="aod_mode">AOD 模式</string>
-    <string name="aod_mode_exit">退出 AOD</string>
     <string name="playlist_source_local">本地</string>
     <string name="playlist_source_online">線上</string>
     <string name="aod_customize_mode_enabled">啟用 AOD 模式</string>
