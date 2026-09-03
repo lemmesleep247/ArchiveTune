@@ -234,6 +234,7 @@ import moe.rukamori.archivetune.playback.queues.filterExplicit
 import moe.rukamori.archivetune.playback.queues.filterVideo
 import moe.rukamori.archivetune.playback.queues.hasBlockedArtist
 import moe.rukamori.archivetune.scrobbling.LastFmServiceConfig
+import moe.rukamori.archivetune.sponsorblock.SponsorBlockPlaybackController
 import moe.rukamori.archivetune.storage.StorageFolderKind
 import moe.rukamori.archivetune.storage.StorageLocationRepository
 import moe.rukamori.archivetune.together.TogetherPlaybackSync
@@ -308,6 +309,9 @@ class MusicService :
 
     @Inject
     lateinit var nextStreamPreloader: NextStreamPreloader
+
+    @Inject
+    lateinit var sponsorBlockPlaybackController: SponsorBlockPlaybackController
 
     private var playbackPreloadConfiguration: PlaybackPreloadConfiguration? = null
 
@@ -1157,6 +1161,7 @@ class MusicService :
                     sleepTimer = SleepTimer(scope, this, this@MusicService)
                     addListener(sleepTimer)
                 }
+        sponsorBlockPlaybackController.attach(player, scope)
         playerInitialized.value = true
         observePlaybackPreloadConfiguration()
             .collect(scope) { configuration ->
@@ -8388,6 +8393,7 @@ class MusicService :
 
     override fun onDestroy() {
         equalizerPlaybackController.detach(this)
+        sponsorBlockPlaybackController.detach()
         discordServiceStopping = true
         requestDiscordSync(
             reason = "service_destroy",
