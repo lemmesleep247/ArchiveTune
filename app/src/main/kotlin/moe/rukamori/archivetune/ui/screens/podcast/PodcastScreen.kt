@@ -14,8 +14,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
-import androidx.compose.foundation.layout.calculateBottomPadding
-import androidx.compose.foundation.layout.calculateTopPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -90,7 +88,7 @@ fun PodcastScreen(
     val onLoadMore = remember(viewModel) { { viewModel.onAction(PodcastAction.LoadMore) } }
     val onPlayAll = remember(viewModel) { { viewModel.onAction(PodcastAction.PlayAll) } }
     val onPlayEpisode = remember(viewModel) { { id: String -> viewModel.onAction(PodcastAction.PlayEpisode(id)) } }
-    val onBack = remember(navController) { { navController.navigateUp() } }
+    val onBack: () -> Unit = remember(navController) { { navController.navigateUp() } }
 
     LaunchedEffect(viewModel, playerConnection, unknownErrorMessage) {
         viewModel.events.collect { event ->
