@@ -130,10 +130,12 @@ fun EpisodeItem.toMediaMetadata() =
             ),
         album =
             podcast?.let { podcast ->
-                MediaMetadata.Album(
-                    id = podcast.id,
-                    title = podcast.name,
-                )
+                podcast.id?.let { podcastId ->
+                    MediaMetadata.Album(
+                        id = podcastId,
+                        title = podcast.name,
+                    )
+                }
             },
         setVideoId = endpoint.playlistSetVideoId,
         isPodcast = true,
