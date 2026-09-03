@@ -698,8 +698,6 @@
     <string name="import_saving">Salvando a importação…</string>
     <string name="import_saving_progress">Salvando: %1$d/%2$d</string>
     <string name="ai_provider_openrouter">OpenRouter</string>
-    <string name="aod_mode">Modo AOD</string>
-    <string name="aod_mode_exit">Sair do AOD</string>
     <string name="playlist_source_local">Local</string>
     <string name="playlist_source_online">Online</string>
 </resources>
