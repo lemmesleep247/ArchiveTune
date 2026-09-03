@@ -409,9 +409,6 @@
     <string name="settings_content_subtitle">Ngôn ngữ, quốc gia và mặc định đề xuất</string>
     <string name="settings_internet_subtitle">Proxy, DNS và hành vi phát mạng</string>
     <string name="settings_storage_subtitle">Cache, tải xuống và lưu trữ ngoại tuyến</string>
-    <string name="settings_lyrics_subtitle">Nhà cung cấp lời bài hát, tải trước và dịch thuật</string>
-    <string name="settings_content_subtitle">Ngôn ngữ, quốc gia và gợi ý mặc định</string>
-    <string name="settings_internet_subtitle">Proxy, DNS và hành vi phát lại mạng</string>
     <string name="settings_updates_subtitle">Phiên bản, ghi chú phát hành và kênh cập nhật</string>
     <string name="settings_about_subtitle">Thông tin ứng dụng, giấy phép và người đóng góp</string>
     <string name="settings_account_subtitle">Đăng nhập và quản lý đồng bộ tài khoản</string>
