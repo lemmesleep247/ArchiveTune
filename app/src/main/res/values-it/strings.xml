@@ -444,7 +444,6 @@
     <string name="latest_version_format">Latest: %s</string>
     <string name="enable_update_notification">Abilita notifica di aggiornamento</string>
     <string name="update_channel">Aggiorna canale</string>
-    <string name="channel_stable">Stabile</string>
     <string name="recent_commits">Impegni recenti</string>
     <string name="update_notification_channel_name">Aggiornamenti dell\'app</string>
     <string name="update_notification_channel_desc">Notifiche per nuovi aggiornamenti dell\'app</string>
@@ -481,7 +480,6 @@
     <string name="removed_song_from_queue">Rimosso \"%s\" dalla coda</string>
     <string name="removed_n_songs_from_queue">Rimossi %d brani dalla coda</string>
     <string name="aod_mode">Modalità AOD</string>
-    <string name="aod_mode_exit">Lascia AOD</string>
     <string name="tempo">Ritmo</string>
     <string name="pitch">Tono</string>
     <string name="pitch_mode_semitones_short">st</string>

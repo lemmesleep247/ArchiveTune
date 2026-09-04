@@ -408,7 +408,6 @@
     <string name="settings_lyrics_subtitle">Provedores de letras e tradução</string>
     <string name="settings_content_subtitle">Idioma, país e padrões de recomendação</string>
     <string name="settings_internet_subtitle">Proxy, DNS e comportamento de reprodução em rede</string>
-    <string name="settings_po_token_subtitle">Verificação de reprodução e dados do visitante</string>
     <string name="settings_storage_subtitle">Cache, downloads e armazenamento offline</string>
     <string name="settings_updates_subtitle">Versão, notas de versão e canal de atualização</string>
     <string name="settings_about_subtitle">Informações do app, licenças e contribuidores</string>

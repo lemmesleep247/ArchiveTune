@@ -642,7 +642,6 @@
     <string name="updates_status_current">Du verwendest die aktuellste verfügbare Version</string>
     <string name="enable_update_notification">Updatebenachrichtigung aktivieren</string>
     <string name="update_channel">Updatekanal</string>
-    <string name="channel_stable">Stabil</string>
     <string name="recent_commits">Neueste Beiträge</string>
     <string name="updates_loading_commits">Lade neueste Commits</string>
     <string name="changelog">Änderungsverlauf</string>
@@ -659,7 +658,6 @@
     <string name="permission_storage_desc">Benötigt um deine heruntergeladene und lokale Audiodateien wiederzugeben.</string>
     <string name="permission_status_allowed">Erlaubt</string>
     <string name="next">Nächster</string>
-    <string name="updates_subtitle_stable">Stabile Version und Veröffentlichungshinweise</string>
     <string name="current_version">Aktuelle Version</string>
     <string name="latest_version_format">Neueste: %s</string>
     <string name="allow">Zulassen</string>
@@ -711,13 +709,6 @@
     <string name="together_dont_show_again">Nicht noch einmal anzeigen</string>
     <string name="together_welcome_join_title">Trete von einem anderen Gerät bei</string>
     <string name="together_welcome_permissions_title">Berechtigungen und Sicherheit</string>
-    <string name="generated_tokens">Generierte Token</string>
-    <string name="regenerate">Neu generieren</string>
-    <string name="regenerate_token">Token neugenerieren</string>
-    <string name="source_url_placeholder">https://youtube.com/account</string>
-    <string name="tokens_generated">Token erfolgreich generiert</string>
-    <string name="token_generation_failed">Tokengenerierung fehlgeschlagen</string>
-    <string name="token_copied">Token in Zwischenablage kopiert</string>
     <string name="saved_accounts">Gespeicherte Konten</string>
     <string name="save_current_account">Aktuelles Konto speichern</string>
     <string name="library_top_mixes_no_recent_history">Höre dir mehr Songs an, dann aktualisiere, um KI-Mixe aus deinem bisherigen Verlauf zu erstellen.</string>
@@ -745,7 +736,6 @@
     <string name="unsaved_account_dialog_cancel">Anmeldung abbrechen</string>
     <string name="unsaved_account_dialog_title">Konto nicht gespeichert</string>
     <string name="add_another_account">Weiteres Konto hinzufügen</string>
-    <string name="extracting_from_url">Tokens aus URL extrahieren</string>
     <string name="together_activity_error">Fehler: %1$s</string>
     <string name="together_activity_song_skipped">%1$s sprang zu %2$s</string>
     <string name="together_activity_playback_resumed">%1$s setzte die Wiedergabe fort</string>
@@ -869,7 +859,6 @@
     <string name="widget_no_recommendations">Noch keine Empfehlungen</string>
     <string name="add_to_n_playlists">Zu %1$d hinzufügen</string>
     <string name="no_playlists_yet">Noch keine Playlists</string>
-    <string name="show_hidden_playlists">Ausgeblendete anzeigen</string>
     <string name="hide_playlist_confirm">\"%1$s\" in Bibliothek ausblenden?</string>
     <string name="together_transfer_host_confirm">Host an %1$s übertragen?</string>
     <string name="lyrics_search_still_searching">Suche noch</string>
@@ -994,8 +983,6 @@
     <string name="music_together">ArchiveTune Music Together</string>
     <string name="together_activity_playback_state_changed">%1$s änderte den Wiedergabestatus</string>
     <string name="together_welcome_title">Willkommen bei ArchiveTune Music Together</string>
-    <string name="po_token_account_notice_title">Dasselbe Konto verwenden</string>
-    <string name="playback_login_po_token">Anmelde-PO-Token</string>
     <string name="eq_presets_description">Beginne ausgehend von einem geräteangepassten Sound</string>
     <string name="no_matching_downloads">Keine passenden Downloads</string>
     <string name="search_downloads">Downloads durchsuchen</string>
@@ -1009,18 +996,9 @@
     <string name="together_welcome_host_title">Hoste eine Sitzung</string>
     <string name="together_welcome_join_body">Öffne den geteilten Link oder gib den Code ein und tippe Beitreten. Deine Warteschlange und Wiedergabe werden dem Host folgen.</string>
     <string name="together_welcome_permissions_body">Hosts können entscheiden, ob Gäste Songs hinzufügen oder die Wiedergabe kontrollieren können und ob sie eine Bestätigung zum Beitritt benötigen.</string>
-    <string name="po_token_generation">PO-Token-Generierung</string>
-    <string name="web_client_po_token">Webclient-PO-Token</string>
-    <string name="po_token_gvs">PO-Token (GVS)</string>
-    <string name="po_token_account_notice_body">Melde dich hier mit demselben Google-Konto an, dass du bereits für YouTube Music in ArchiveTune benutzt, bevor du ein PO-Token generierst.</string>
     <string name="gatekeeper_connection_blocked">Verbindung durch ArchiveTune Remote blockiert. Diese App konnte nicht als offizieller ArchiveTune-Build verifiziert werden. Installiere einen offiziellen Build von https://github.com/rukamori/ArchiveTune oder https://t.me/ArchiveTuneGC.</string>
     <string name="scheduled_backup_disabled_description">Automatische Sicherungen sind pausiert.</string>
     <string name="scheduled_backup_enabled_description">Sicherungen laufen automatisch nach dem untenstehenden Plan.</string>
-    <string name="po_token_account_notice_same_account">Wenn diese Webansicht ein anderes Konto benutzt, wird das generierte Token nicht richtig funktionieren.</string>
-    <string name="po_token_account_notice_mismatch">Verwende das passende Konto, beende die Anmeldung, öffne dann youtube.com/account und generiere das Token auf dieser Seite.</string>
-    <string name="source_url">Quellen-URL</string>
-    <string name="po_token_player">PO-Token (Player)</string>
-    <string name="web_client_po_token_desc">PO-Token-Generierung für webbasierte Player-Clients aktivieren</string>
     <string name="together_welcome_host_body">Tippe Sitzung starten und teile dann den Sitzungslink. Lasse ArchiveTune während dem Hosten im Hintergrund offen.</string>
     <string name="together_activity_log_empty_body">Sitzungsereignisse werden hier erscheinen wenn sie passieren.</string>
     <string name="together_activity_log">Aktivitätslog</string>
