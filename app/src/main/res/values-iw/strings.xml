@@ -433,7 +433,6 @@
     <string name="palette_cobalt_blue">כחול קובלט</string>
     <string name="discord_activity_type">סוג פעילות</string>
     <string name="persistent_queue_desc">שחזר את התור האחרון שלך בעת הפעלת האפליקציה</string>
-    <string name="aod_mode_exit">יציאה מ- AOD</string>
     <string name="loudness">עוצמה</string>
     <string name="palette_peach">אפרסק</string>
     <string name="player">נגָן</string>
@@ -737,7 +736,6 @@
     <string name="about">אודות</string>
     <string name="new_version_available">גרסה חדשה זמינה</string>
     <string name="updates">עדכונים</string>
-    <string name="updates_subtitle_stable">מהדורות יציבות והערות שחרור</string>
     <string name="current_version">גרסה נוכחית</string>
     <string name="latest_version_format">אחרון: %s</string>
     <string name="updates_status_checking">בודק את הגרסה האחרונה</string>
@@ -745,7 +743,6 @@
     <string name="enable_update_notification">הפעל התראות עדכון</string>
     <string name="update_channel">עדכון ערוץ</string>
     <string name="update_channel_desc">בחרו בין גרסאות שנבדקו לבין תמונות מצב של פיתוח.</string>
-    <string name="channel_stable">יציב</string>
     <string name="recent_commits">שינויים אחרונים</string>
     <string name="updates_loading_commits">טוען את השינויים האחרונים</string>
     <string name="updates_recent_commits_count">%1$d שינויים אחרונים</string>
@@ -826,25 +823,6 @@
     <string name="together_welcome_join_body">פתחו את הקישור המשותף, או הזינו את הקוד והקישו על הצטרף. התור וההשמעה שלכם יעקבו אחר המארח.</string>
     <string name="together_welcome_permissions_title">הרשאות ובטיחות</string>
     <string name="together_welcome_permissions_body">מארחים יכולים להחליט אם אורחים יכולים להוסיף שירים, לשלוט בהפעלה או לדרוש אישור להצטרפות.</string>
-    <string name="po_token_generation">יצירת טוקן PO</string>
-    <string name="web_client_po_token">טוקן PO של לקוח אינטרנט</string>
-    <string name="web_client_po_token_desc">הפעלת יצירת טוקן PO עבור לקוחות שחקנים מבוססי אינטרנט</string>
-    <string name="po_token_gvs">טוקן PO (GVS)</string>
-    <string name="po_token_player">טוקן PO (שחקן)</string>
-    <string name="visitor_data">נתוני מבקרים</string>
-    <string name="generated_tokens">טוקנים שנוצרו</string>
-    <string name="regenerate">יצירה מחדש</string>
-    <string name="regenerate_token">צור מחדש טוקן</string>
-    <string name="source_url">כתובת URL של המקור</string>
-    <string name="source_url_placeholder">https://youtube.com/account</string>
-    <string name="tokens_generated">טוקנים נוצרו בהצלחה</string>
-    <string name="token_generation_failed">יצירת הטוקנים נכשלה</string>
-    <string name="token_copied">הטוקן הועתק ללוח</string>
-    <string name="extracting_from_url">חילוץ טוקנים מכתובת URL</string>
-    <string name="po_token_account_notice_title">השתמש באותו חשבון</string>
-    <string name="po_token_account_notice_body">היכנס כאן עם אותו חשבון גוגל שבו אתה כבר משתמש עבור YouTube Music בתוך ArchiveTune לפני יצירת טוקן PO.</string>
-    <string name="po_token_account_notice_same_account">אם תצוגת WebView זו משתמשת בחשבון אחר, הטוקן שנוצר לא יפעל כהלכה.</string>
-    <string name="po_token_account_notice_mismatch">השתמש בחשבון התואם, סיימו את תהליך הכניסה, לאחר מכן פתחו את youtube.com/account וצרו את הטוקן מאותו דף.</string>
     <string name="saved_accounts">חשבונות שמורים</string>
     <string name="save_current_account">שמירת חשבון נוכחי</string>
     <string name="no_saved_accounts">עדיין אין חשבונות שמורים</string>
@@ -886,7 +864,6 @@
     <string name="no_playlists_yet">אין עדיין פלייליסטים</string>
     <string name="hide_playlist">הסתרת פלייליסט</string>
     <string name="unhide_playlist">ביטול הסתרת פלייליסט</string>
-    <string name="show_hidden_playlists">הצגת מוסתרים</string>
     <string name="hide_playlist_confirm">להסתיר את \"%1$s\" מהספרייה?</string>
     <string name="together_transfer_host">העברת מארח</string>
     <string name="together_approve">אישור</string>

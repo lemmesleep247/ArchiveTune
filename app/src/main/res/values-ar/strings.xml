@@ -472,21 +472,6 @@
     <string name="content_length_label">مدة المحتوى</string>
     <string name="auto_start_on_bluetooth">التشغيل التلقائي عند الاتصال عبر البلوتوث</string>
     <string name="auto_start_on_bluetooth_desc">استئناف التشغيل تلقائيًا عند توصيل جهاز صوت عبر البلوتوث</string>
-    <string name="po_token_generation">إنشاء توكن PO</string>
-    <string name="web_client_po_token">توكن PO لعميل الويب</string>
-    <string name="web_client_po_token_desc">تفعيل إنشاء توكن PO لعملاء مشغّل الويب</string>
-    <string name="po_token_gvs">توكن PO (GVS)</string>
-    <string name="po_token_player">توكن PO (Player)</string>
-    <string name="visitor_data">بيانات الزائر</string>
-    <string name="generated_tokens">التوكنات المنشأة</string>
-    <string name="regenerate">إعادة الإنشاء</string>
-    <string name="regenerate_token">إعادة إنشاء التوكن</string>
-    <string name="source_url">مصدر URL</string>
-    <string name="source_url_placeholder">https://youtube.com/account</string>
-    <string name="tokens_generated">تم إنشاء التوكنات بنجاح</string>
-    <string name="token_generation_failed">فشلت عملية إنشاء التوكنات</string>
-    <string name="token_copied">تم نسخ التوكن إلى الحافظة</string>
-    <string name="extracting_from_url">استخراج التوكنات من عنوان URL</string>
     <string name="speed_dial">الوصول السريع</string>
     <string name="music_recognition">التعرف على الموسيقى</string>
     <string name="pin_to_speed_dial">التثبيت إلى قائمة الوصول السريع</string>
@@ -618,7 +603,6 @@
     <string name="canvas_refetch_failed">تعذر تحديث الشاشة التفاعلية المتحركة</string>
     <string name="hide_playlist">إخفاء قائمة التشغيل</string>
     <string name="unhide_playlist">إلغاء إخفاء قائمة التشغيل</string>
-    <string name="show_hidden_playlists">إظهار المخفية</string>
     <string name="hide_playlist_confirm">إخفاء \"%1$s\" من المكتبة؟</string>
     <string name="together_participants">المشاركون</string>
     <string name="together_connected_count">%1$d متصل</string>
@@ -644,7 +628,6 @@
     <string name="removed_song_from_queue">تمت إزالة \"%s\" من قائمة الانتظار</string>
     <string name="removed_n_songs_from_queue">تمت إزالة %d أغنية من قائمة الانتظار</string>
     <string name="aod_mode">وضع AOD</string>
-    <string name="aod_mode_exit">الخروج من AOD</string>
     <string name="tempo">سرعة الإيقاع</string>
     <string name="pitch">حدّة الصوت</string>
     <string name="pitch_mode_semitones_short">نصف درجة</string>
@@ -724,7 +707,6 @@
     <string name="lyrics_mode_v2">V2 القديم</string>
     <string name="lyrics_mode_enhanced">محسّن</string>
     <string name="lyrics_animation_style_v2_only">متاح فقط في وضع الكلمات V2</string>
-    <string name="playback_login_po_token">توكن PO لتسجيل الدخول</string>
     <string name="playback_error_code">الرمز</string>
     <string name="playback_error_http">HTTP</string>
     <string name="playback_error_message">الرسالة</string>
@@ -929,7 +911,6 @@
     <string name="about">حول</string>
     <string name="new_version_available">إصدار جديد متوفر</string>
     <string name="updates">التحديثات</string>
-    <string name="updates_subtitle_stable">الإصدارات المستقرة وملاحظات الإصدار</string>
     <string name="updates_subtitle_artifact">إصدارات Canary والتغييرات الحديثة في التطوير</string>
     <string name="current_version">الإصدار الحالي</string>
     <string name="latest_version_format">الأحدث: %s</string>
@@ -939,7 +920,6 @@
     <string name="enable_update_notification_channel_desc">تلقي إشعارات عند توفر إصدار جديد في القناة المحددة</string>
     <string name="update_channel">قناة التحديث</string>
     <string name="update_channel_desc">اختر بين الإصدارات المختبرة ولقطات التطوير.</string>
-    <string name="channel_stable">مستقر</string>
     <string name="channel_artifact">تجريبي (Canary)</string>
     <string name="recent_commits">التغييرات الأخيرة</string>
     <string name="updates_artifact_hosting_description">تُنشر إصدارات Canary تلقائيًا من أحدث فرع تطوير.</string>
@@ -1103,10 +1083,6 @@
     <string name="together_welcome_join_body">افتح الرابط المشترك، أو أدخل الرمز وانقر على انضمام. ستتبع قائمة الانتظار والتشغيل الخاصة بك المستضيف.</string>
     <string name="together_welcome_permissions_title">الأذونات والأمان</string>
     <string name="together_welcome_permissions_body">يمكن للمستضيفين تحديد ما إذا كان بإمكان الضيوف إضافة أغاني، التحكم في التشغيل، أو اشتراط الموافقة للانضمام.</string>
-    <string name="po_token_account_notice_title">استخدم نفس الحساب</string>
-    <string name="po_token_account_notice_body">سجل الدخول هنا باستخدام نفس حساب Google الذي تستخدمه بالفعل لـ YouTube Music داخل ArchiveTune قبل إنشاء توكن PO.</string>
-    <string name="po_token_account_notice_same_account">إذا استخدم عرض الويب هذا حسابًا مختلفًا، فلن يعمل التوكن المنشأ بشكل صحيح.</string>
-    <string name="po_token_account_notice_mismatch">استخدم الحساب المطابق، وأكمل عملية تسجيل الدخول، ثم افتح youtube.com/account وقم بإنشاء التوكن من تلك الصفحة.</string>
     <string name="saved_accounts">الحسابات المحفوظة</string>
     <string name="save_current_account">حفظ الحساب الحالي</string>
     <string name="no_saved_accounts">لا توجد حسابات محفوظة بعد</string>

@@ -361,7 +361,6 @@
     <string name="settings_lyrics_subtitle">Proveedores de letras y traducción</string>
     <string name="settings_content_subtitle">Idioma, país y valores predeterminados de recomendación</string>
     <string name="settings_internet_subtitle">Comportamiento de la reproducción en redes, DNS y servidores proxy</string>
-    <string name="settings_po_token_subtitle">Verificación de la reproducción y datos de los visitantes</string>
     <string name="settings_storage_subtitle">Caché, descargas y almacenamiento sin conexión</string>
     <string name="settings_updates_subtitle">Versión, notas de la versión y canal de actualización</string>
     <string name="settings_about_subtitle">Información sobre la aplicación, licencias y colaboradores</string>
@@ -692,7 +691,6 @@
     <string name="import_saving">Guardando datos importados…</string>
     <string name="import_saving_progress">Guardando: %1$d/%2$d</string>
     <string name="aod_mode">Pantalla siempre encendida</string>
-    <string name="aod_mode_exit">Desactivar pantalla siempre encendida</string>
     <string name="playlist_source_local">Almacenamiento del dispositivo</string>
     <string name="playlist_source_online">En la red</string>
     <string name="arrange_playlist_tags">Ordenar las etiquetas de la lista de reproducción</string>

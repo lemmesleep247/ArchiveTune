@@ -446,7 +446,6 @@
     <string name="latest_version_format">En son: %s</string>
     <string name="enable_update_notification">Güncelleme Bildirimini Etkinleştir</string>
     <string name="update_channel">Kanalı Güncelle</string>
-    <string name="channel_stable">Kararlı</string>
     <string name="recent_commits">Son Taahhütler</string>
     <string name="update_notification_channel_name">Uygulama Güncellemeleri</string>
     <string name="update_notification_channel_desc">Yeni uygulama güncellemeleri için bildirimler</string>
@@ -491,10 +490,6 @@
     <string name="together_welcome_join_body">Paylaşılan bağlantıyı açın veya kodu girip Katıl\'a basın. Oynatma sıranız ve playback ana cihazı takip edecek.</string>
     <string name="together_welcome_permissions_title">İzinler ve güvenlik</string>
     <string name="together_welcome_permissions_body">Ana cihazlar misafirlerin şarkı eklemesine, playback\'i kontrol etmesine veya katılmak için izin isteyip istemeyeceğine karar verebilirler.</string>
-    <string name="visitor_data">Ziyaretçi Verisi</string>
-    <string name="regenerate">Yeniden oluştur</string>
-    <string name="source_url">Kaynak URL\'si</string>
-    <string name="source_url_placeholder">https://youtube.com/account</string>
     <string name="library_top_mixes_no_valid_mixes">YZ, Yakın Geçmişinizden herhangi oynatılabilir mixler oluşturamadı.</string>
     <string name="library_top_mixes_failed">En Popüler mixler oluşturulamadı.</string>
     <string name="your_playlists">Çalma Listeleriniz</string>
@@ -586,7 +581,6 @@
     <string name="canvas_refetch_failed">Hareketli canvas yenilenemedi</string>
     <string name="hide_playlist">Çalma listesini gizle</string>
     <string name="unhide_playlist">Çalma listesini göster</string>
-    <string name="show_hidden_playlists">Gizlileri göster</string>
     <string name="hide_playlist_confirm">\"%1$s\" kütüphaneden gizlensin mi?</string>
     <string name="together_participants">Katılımcılar</string>
     <string name="together_connected_count">%1$d bağlı</string>
